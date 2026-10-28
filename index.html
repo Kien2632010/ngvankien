@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
@@ -49,13 +49,6 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col relative selection:bg-cyan-500 selection:text-black bg-[#060d17] text-[#e2e8f0] font-['Plus_Jakarta_Sans']">
-
-  <!-- Thẻ Audio ẩn để phát nhạc -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="https://files.catbox.moe/s7sjn4.mp4" type="video/mp4">
-    <source src="https://files.catbox.moe/s7sjn4.mp4" type="audio/mp4">
-  </audio>
-
   <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-30">
     <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-cyan-600/20 rounded-full blur-[140px]"></div>
     <div class="absolute top-1/3 -right-40 w-[32rem] h-[32rem] bg-blue-600/15 rounded-full blur-[160px]"></div>
@@ -77,9 +70,14 @@
         <div class="absolute inset-0 bg-gradient-to-r from-rose-500/20 via-transparent to-rose-500/20 animate-pulse pointer-events-none"></div>
         <div class="relative flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
           <div class="text-4xl sm:text-5xl shrink-0 animate-bounce">🚨⛔️</div>
-          <div>
+          <div class="w-full">
             <h3 class="text-rose-400 font-black uppercase text-sm sm:text-base mb-1.5 tracking-wider font-display flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-warning-circle text-xl"></i> Lưu ý quan trọng</h3>
-            <p class="text-rose-100 text-xs sm:text-sm font-medium leading-relaxed">Đang vượt thì <strong class="text-white bg-rose-600 px-2 py-0.5 rounded uppercase shadow-lg">ĐỪNG ĐÓNG TAB</strong>, vượt xong rồi cũng vậy (đối với tab web <strong>https://ngvankien.netlify.app>).<br class="hidden sm:block"><span class="inline-block mt-1.5 text-rose-200">Qua ngày mới cứ để vậy, làm mới web là được!</span></p>
+            <p class="text-rose-100 text-xs sm:text-sm font-medium leading-relaxed">Đang vượt thì <strong class="text-white bg-rose-600 px-2 py-0.5 rounded uppercase shadow-lg">ĐỪNG ĐÓNG TAB</strong>, vượt xong rồi cũng vậy (đối với tab web <strong>https://ngvankien.netlify.app>).</p>
+            <div class="mt-3">
+              <button onclick="openGuideModal()" class="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2">
+                <i class="ph-bold ph-book-open text-base"></i> Cách Getkey Nhiều Lần Trong 1 Ngày
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -111,6 +109,52 @@
     </footer>
     <a href="https://kenmodshop.site" target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-gradient-to-tr from-cyan-400 to-blue-600 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:scale-110 hover:shadow-[0_0_30px_rgba(34,211,238,0.9)] transition-all duration-300 group border-2 border-white/20"><i class="ph-fill ph-game-controller text-2xl group-hover:animate-pulse"></i></a>
   </div>
+
+  <!-- Modal Hướng Dẫn Getkey Nhiều Lần -->
+  <div id="guideModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/85 backdrop-blur-md hidden">
+    <div class="relative w-full max-w-lg max-h-[92vh] overflow-y-auto no-scrollbar glass-card rounded-3xl p-5 border border-cyan-500/40 flex flex-col gap-4 text-slate-200">
+      <button type="button" onclick="closeGuideModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white p-2"><i class="ph-bold ph-x text-lg"></i></button>
+      <div class="flex items-center gap-3 border-b border-slate-700/60 pb-3">
+        <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl"><i class="ph-bold ph-info"></i></div>
+        <h3 class="text-base sm:text-lg font-black text-white font-display uppercase tracking-wider">Cách Getkey Nhiều Lần Trong 1 Ngày</h3>
+      </div>
+      <div class="text-xs sm:text-sm space-y-3 leading-relaxed">
+        <div class="p-3 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-200 font-medium">
+          <strong class="text-rose-400 uppercase block mb-1">⚠️ LƯU Ý QUAN TRỌNG:</strong>
+          FAKE VPN KHÔNG CÓ TÁC DỤNG ĐỐI VỚI WEB NÊN AE ĐỪNG DÙNG VÔ ÍCH, BẬT LÊN THÌ AE SẼ KHÔNG VƯỢT LINK ĐƯỢC ĐÂU!
+        </div>
+        
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+          <strong class="text-cyan-400 font-bold uppercase block mb-2">🌐 CÁCH LÀM CHO AE DÙNG WIFI:</strong>
+          <ul class="space-y-1.5 text-slate-300">
+            <li><strong>Bước 1:</strong> Anh em vượt link ở tài khoản trên web hiện tại bình thường.</li>
+            <li><strong>Bước 2:</strong> Anh em đăng xuất acc ra khỏi web.</li>
+            <li><strong>Bước 3:</strong> Anh em rút điện của cục wifi tầm 10 giây xong cắm lại.</li>
+            <li><strong>Bước 4:</strong> Kết nối lại wifi và vào web tạo tài khoản mới.</li>
+            <li><strong>Bước 5:</strong> Vượt link lấy key lại như bình thường và cứ thế lặp lại.</li>
+          </ul>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+          <strong class="text-cyan-400 font-bold uppercase block mb-2">📶 CÁCH LÀM CHO AE DÙNG 4G:</strong>
+          <ul class="space-y-1.5 text-slate-300">
+            <li><strong>Bước 1:</strong> Anh em vượt link ở tài khoản trên web hiện tại bình thường.</li>
+            <li><strong>Bước 2:</strong> Anh em đăng xuất acc ra khỏi web.</li>
+            <li><strong>Bước 3:</strong> Tắt 4G và bật chế độ máy bay tầm 30 giây - 1 phút.<br><em class="text-amber-400 text-[11px]">(Cách 4G này hơi khê, không được thì anh em chuyển sang dùng mạng Wifi mà làm!)</em></li>
+            <li><strong>Bước 4:</strong> Bật 4G lại và vào tạo lại tài khoản mới, sau đó vượt như bình thường.</li>
+          </ul>
+        </div>
+
+        <div class="p-3 rounded-xl bg-amber-950/40 border border-amber-500/40 text-amber-200 font-medium">
+          <strong class="text-amber-400 uppercase block mb-1">💡 PHƯƠNG ÁN DỰ PHÒNG:</strong>
+          NẾU 2 CÁCH TRÊN KHÔNG ĐƯỢC THÌ LÀM CÁCH SAU:<br>
+          - Ai đã getkey trên Safari rồi thì chuyển qua Chrome để get, nếu vẫn không được thì getkey tại link ở Zalo hoặc Telegram nhé!
+        </div>
+      </div>
+      <button onclick="closeGuideModal()" class="w-full py-3 rounded-xl bg-cyan-500 text-black font-black text-xs uppercase tracking-wider hover:bg-cyan-400 transition-all">Đã Hiểu</button>
+    </div>
+  </div>
+
   <div id="claimModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/85 backdrop-blur-md hidden">
     <div class="relative w-full max-w-lg max-h-[92vh] overflow-y-auto no-scrollbar glass-card rounded-3xl p-5 border border-cyan-500/40 flex flex-col gap-4">
       <button type="button" onclick="closeClaimModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white p-2"><i class="ph-bold ph-x text-lg"></i></button>
@@ -136,37 +180,11 @@
   </div>
 
   <!-- ADMIN -->
-<div id="adminView" class="hidden fixed inset-0 z-50 overflow-y-auto p-4 sm:p-8">
+  <div id="adminView" class="hidden fixed inset-0 z-50 overflow-y-auto p-4 sm:p-8">
     <div id="adminContent" class="max-w-3xl mx-auto"></div>
   </div>
 
   <script>
-    // --- XỬ LÝ PHÁT NHẠC KHI LƯỚT MÀN HÌNH ---
-    const bgMusic = document.getElementById('bgMusic');
-    let isMusicPlaying = false;
-
-    function playAudioOnScroll() {
-      if (!isMusicPlaying && bgMusic) {
-        bgMusic.play().then(() => {
-          isMusicPlaying = true;
-          // Sau khi phát thành công, tháo bỏ các sự kiện lắng nghe để tránh gọi lại nhiều lần
-          window.removeEventListener('scroll', playAudioOnScroll);
-          window.removeEventListener('touchmove', playAudioOnScroll);
-          window.removeEventListener('wheel', playAudioOnScroll);
-          window.removeEventListener('click', playAudioOnScroll);
-        }).catch(err => {
-          console.log("Trình duyệt chặn autoplay, chờ lượt lướt tiếp theo:", err);
-        });
-      }
-    }
-
-    // Đăng ký sự kiện lướt (scroll), chạm lướt (touchmove), lăn chuột (wheel), bấm màn hình (click)
-    window.addEventListener('scroll', playAudioOnScroll, { passive: true });
-    window.addEventListener('touchmove', playAudioOnScroll, { passive: true });
-    window.addEventListener('wheel', playAudioOnScroll, { passive: true });
-    window.addEventListener('click', playAudioOnScroll, { passive: true });
-
-    // --- CODE GỐC CỦA TRANG WEB ---
     const API = '/api';
     const $ = id => document.getElementById(id);
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -174,6 +192,10 @@
     
     let sid; try { sid = localStorage.getItem('sid'); if (!/^[a-f0-9]{32}$/.test(sid || '')) { sid = hex(); localStorage.setItem('sid', sid); } } catch (e) { sid = sid || hex(); }
     let IS_MAINTENANCE = false; let MAINTENANCE_MSG = 'Hệ thống đang bảo trì.';
+
+    // Hàm mở/đóng modal hướng dẫn Getkey nhiều lần
+    function openGuideModal() { $('guideModal').classList.remove('hidden'); }
+    function closeGuideModal() { $('guideModal').classList.add('hidden'); }
 
     async function api(path, extra) {
       const r = await fetch(API + path, { method: 'POST', cache: 'no-store', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ sid }, extra)) });
