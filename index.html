@@ -52,7 +52,7 @@
   <!-- Thẻ phát nhạc nền ẩn -->
   <audio id="bgMusic" src="https://files.catbox.moe/s7sjn4.mp4" preload="auto" loop></audio>
 
-  <!-- MÀN HÌNH LOADING XÁC THỰC (Mẫu Ảnh 1) -->
+  <!-- MÀN HÌNH LOADING XÁC THỰC -->
   <div id="loadingOverlay" class="fixed inset-0 z-50 bg-[#060d17] flex flex-col items-center justify-center p-6 text-center transition-opacity duration-500">
     <div class="relative w-24 h-24 mb-6 flex items-center justify-center">
       <div class="absolute inset-0 rounded-full border-4 border-cyan-500/20 border-t-cyan-400 animate-spin"></div>
@@ -128,7 +128,7 @@
       <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-5 items-start"></div>
       <p class="err text-red-500 text-center font-bold mt-4" id="errMain"></p>
 
-      <!-- KHỐI LIÊN HỆ ADMIN & CỘNG ĐỒNG (Mẫu Ảnh 2) -->
+      <!-- KHỐI LIÊN HỆ ADMIN & CỘNG ĐỒNG -->
       <section class="glass-card rounded-3xl p-6 sm:p-8 border border-cyan-500/30 text-center relative overflow-hidden">
         <div class="w-16 h-16 rounded-3xl bg-cyan-400/20 border-2 border-cyan-400 flex items-center justify-center mx-auto mb-4 text-cyan-300 text-2xl shadow-[0_0_20px_rgba(34,211,238,0.3)]">
           <i class="ph-bold ph-x font-bold"></i>
@@ -162,7 +162,7 @@
         </div>
       </section>
 
-      <!-- KHỐI CAM KẾT & TÍNH NĂNG (Mẫu Ảnh 3) -->
+      <!-- KHỐI CAM KẾT & TÍNH NĂNG -->
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="glass-card rounded-2xl p-4 flex items-center gap-3 border border-slate-800">
           <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl shrink-0"><i class="ph-bold ph-lightning"></i></div>
@@ -182,7 +182,7 @@
         </div>
       </section>
 
-      <!-- KHỐI LƯỢT NHẬN GẦN ĐÂY REALTIME (Mẫu Ảnh 3) -->
+      <!-- KHỐI LƯỢT NHẬN GẦN ĐÂY REALTIME -->
       <section class="glass-card rounded-3xl p-5 border border-cyan-500/20">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-2">
@@ -193,9 +193,7 @@
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Trực tiếp
           </span>
         </div>
-        <div id="liveClaimList" class="space-y-2.5">
-          <!-- Data tự động sinh thêm bằng JS bên dưới -->
-        </div>
+        <div id="liveClaimList" class="space-y-2.5"></div>
       </section>
 
       <!-- HƯỚNG DẪN BƯỚC THỰC HIỆN -->
@@ -206,7 +204,7 @@
       </div>
     </main>
 
-    <!-- FOOTER MỞ RỘNG (Mẫu Ảnh 4) -->
+    <!-- FOOTER MỞ RỘNG -->
     <footer class="glass-card border-t border-cyan-500/20 pt-10 pb-6 px-4 sm:px-8 mt-12 mb-16 text-slate-400">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-xs">
         <div>
@@ -259,7 +257,7 @@
       </div>
     </footer>
 
-    <!-- FLOAT BUTTONS CHAT & NHẠC (Style KENMOD STORE) -->
+    <!-- FLOAT BUTTONS CHAT & NHẠC -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-end">
       <button type="button" id="toggleAudioBtn" onclick="toggleAudio()" class="w-12 h-12 bg-cyan-500/80 backdrop-blur-md rounded-full flex items-center justify-center text-black shadow-lg hover:scale-110 transition-all border border-cyan-300">
         <i class="ph-bold ph-music-notes text-xl" id="audioIcon"></i>
@@ -354,7 +352,6 @@
     let sid; try { sid = localStorage.getItem('sid'); if (!/^[a-f0-9]{32}$/.test(sid || '')) { sid = hex(); localStorage.setItem('sid', sid); } } catch (e) { sid = sid || hex(); }
     let IS_MAINTENANCE = false; let MAINTENANCE_MSG = 'Hệ thống đang bảo trì.';
 
-    // Xử lý màn hình Loading giả lập từ ảnh 1 (0 -> 100%)
     function startInitialLoading() {
       let percent = 0;
       const bar = $('loadProgressBar');
@@ -374,7 +371,6 @@
       }, 120);
     }
 
-    // Giả lập danh sách lượt nhận gần đây Realtime (Ảnh 3)
     function renderLiveClaims(recentList) {
       const container = $('liveClaimList');
       const fallbackData = [
@@ -496,13 +492,13 @@
       $('modalLoadingState').classList.add('hidden'); $('startClaimBtn').classList.remove('hidden');
     }
 
-    // Tắt/Mở Nhạc nền
+    // Tắt/Mở Nhạc nền & Xoay tròn Icon
     function toggleAudio() {
       const music = $('bgMusic');
       const icon = $('audioIcon');
       if(music.paused) {
         music.play();
-        icon.className = 'ph-bold ph-music-notes text-xl';
+        icon.className = 'ph-bold ph-music-notes text-xl animate-spin';
       } else {
         music.pause();
         icon.className = 'ph-bold ph-speaker-slash text-xl';
@@ -525,7 +521,6 @@
       $('btnToggleOn').onclick = () => handleToggleStatus('ON'); $('btnToggleOff').onclick = () => handleToggleStatus('OFF'); $('btnSchedule').onclick = () => handleSchedule(); $('new').onclick = () => adminForm(null);
       $('adminContent').querySelectorAll('[data-a]').forEach(b => b.onclick = () => { const p = ADM.products.find(x => String(x.id) === b.dataset.id); b.dataset.a === 'edit' ? adminForm(p) : adminKeys(p); });
       
-      // Render danh sách lượt nhận realtime trên giao diện khách từ dữ liệu admin/overview nếu có
       renderLiveClaims(d.recent);
     }
     
@@ -554,16 +549,19 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Khởi chạy hiệu ứng Loading giả lập
         startInitialLoading();
         renderLiveClaims([]);
 
-        // Tự động phát nhạc nền khi vào web hoặc khi có tương tác đầu tiên
         const music = $('bgMusic');
+        const icon = $('audioIcon');
         music.volume = 0.5;
-        music.play().catch(() => {
+        music.play().then(() => {
+            icon.className = 'ph-bold ph-music-notes text-xl animate-spin';
+        }).catch(() => {
+            icon.className = 'ph-bold ph-speaker-slash text-xl';
             const playAudio = () => {
                 music.play();
+                icon.className = 'ph-bold ph-music-notes text-xl animate-spin';
                 window.removeEventListener('click', playAudio);
                 window.removeEventListener('touchstart', playAudio);
             };
